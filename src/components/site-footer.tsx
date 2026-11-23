@@ -13,7 +13,6 @@ export function SiteFooter() {
         <div className="space-y-3">
           <Logo />
           <p className="max-w-[40ch] text-sm text-muted">
-            © 2026 SnagUrl. All rights reserved.
             A Supergales project — Built by Robert.
           </p>
         </div>
