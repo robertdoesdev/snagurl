@@ -69,7 +69,6 @@ function Preview({
         controls
         preload="metadata"
         playsInline
-        referrerPolicy="no-referrer"
         onLoadedMetadata={(event) => onDuration(event.currentTarget.duration)}
         onError={() => setFailed(true)}
         className="size-full bg-black object-contain"
@@ -82,7 +81,6 @@ function Preview({
         src={url}
         controls
         preload="metadata"
-        referrerPolicy="no-referrer"
         onLoadedMetadata={(event) => onDuration(event.currentTarget.duration)}
         onError={() => setFailed(true)}
         className="w-[min(100%,26rem)] px-4"
