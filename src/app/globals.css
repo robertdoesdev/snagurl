@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+:root {
+  --ground: #0e1013;
+  --raised: #15181d;
+  --sunken: #0a0c0f;
+  --line: #22262d;
+  --line-strong: #343a44;
+  --ink: #e9edf2;
+  --muted: #8f98a5;
+  --tape: #6b9bff;
+  --tape-ink: #08122b;
+  --focus: #6b9bff;
+  --danger: #f28b7d;
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --ground: #f4f6f9;
+  --raised: #ffffff;
+  --sunken: #e8ecf1;
+  --line: #d9dee6;
+  --line-strong: #b9c1cd;
+  --ink: #11151b;
+  --muted: #566170;
+  --tape: #2a5bd7;
+  --tape-ink: #ffffff;
+  --focus: #2a5bd7;
+  --danger: #b3361f;
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-ground: var(--ground);
+  --color-raised: var(--raised);
+  --color-sunken: var(--sunken);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-tape: var(--tape);
+  --color-tape-ink: var(--tape-ink);
+  --color-danger: var(--danger);
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scrollbar-gutter: stable;
+    scroll-behavior: smooth;
+    scroll-padding-top: 1.5rem;
+  }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--tape);
+    color: var(--tape-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(260%);
+  }
+}
+
+.animate-reveal {
+  animation: reveal 0.24s ease-out both;
+}
+
+.animate-sweep {
+  animation: sweep 1.3s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-reveal,
+  .animate-sweep,
+  .animate-spin {
+    animation: none;
+  }
+}
